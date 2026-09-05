@@ -55,4 +55,8 @@ Just vanilla **HTML5**, **CSS3**, and **JavaScript (ES6+)** — no dependencies.
 
 ## License
 
+<<<<<<< HEAD
 Feel free to use, modify, and share.
+=======
+Feel free to use, modify, and share.
+>>>>>>> 77cbdf59ac9e0cc99bd98228aca257de8be107e3
