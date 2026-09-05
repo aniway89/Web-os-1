@@ -38,10 +38,9 @@
     /* =========================================================
        APP DATABASE
     ========================================================= */
-
     const apps = {
         notes:      { name: "Notepad",    icon: "src/note.png",       type: "internal" },
-        vscode:     { name: "VS Code",    icon: "src/VScode.png",     type: "iframe", url: "https://vscode.dev/" },
+        vscode:     { name: "VS Code",    icon: "src/VScode.png",     type: "iframe", url: "https://onecompiler.com/embed/" },
         brave:      { name: "Brave",      icon: "src/Brave.png",      type: "iframe", url: "https://poki.com/en/g/blast-buddies" },
         terminal:   { name: "Terminal",   icon: "src/Terminal.png",   type: "internal" },
         settings:   { name: "Settings",   icon: "src/setting.png",    type: "internal" },
@@ -49,12 +48,12 @@
         safari:     { name: "Safari",     icon: "src/Safari.png",     type: "iframe", url: "https://www.google.com/search?igu=1&q=hello" },
         chrome:     { name: "Chrome",     icon: "src/Chrome.png",     type: "iframe", url: "https://www.google.com/" },
         pinterest:  { name: "Pinterest",  icon: "src/Pinterest.png",  type: "iframe", url: "https://www.pinterest.com/" },
-        discord:    { name: "Discord",    icon: "src/Dsicord.png",    type: "iframe", url: "https://dev-dock-ruddy.vercel.app/" },
-        instagram:  { name: "Instagram",  icon: "src/insta.png",      type: "iframe", url: "https://www.instagram.com/yoru.ayan/" },
-        spotify:    { name: "Spotify",    icon: "src/Spotify.png",    type: "iframe", url: "https://open.spotify.com/" },
-        whatsapp:   { name: "WhatsApp",   icon: "src/what.png",       type: "iframe", url: "https://web.whatsapp.com/" },
+        discord:    { name: "kobayashi OS",    icon: "src/Dsicord.png",    type: "iframe", url: "https://dev-dock-ruddy.vercel.app/" },
+        archery:  { name: "Archery",  icon: "src/Arch.png",      type: "iframe", url: "https://www.madkidgames.com/full/bowmasters-archery-shooting" },
+        spotify:    { name: "Spotify",    icon: "src/Spotify.png",    type: "iframe", url: "https://open.spotify.com/embed/album/2ODvWsOgouMbaA5xf0RkJe?utm_source=oembed" },
+        Youtube:   { name: "Youtube",   icon: "src/youtube.png",       type: "iframe", url: "https://www.youtube-nocookie.com/embed/2DFKIllyMOY?si=6Mb053DK-HC4gC44" },
         files:      { name: "Files",      icon: "src/Files.png",      type: "internal" },
-        gmail:      { name: "Gmail",      icon: "src/gmail.png",      type: "iframe", url: "https://www.google.com/search?igu=1&q=hello" }
+        Block_Blast:      { name: "Block Blast",      icon: "src/Block.png",      type: "iframe", url: "https://www.madkidgames.com/full/block-blast-puzzle-game" }
     };
 
     /* =========================================================
@@ -185,6 +184,12 @@
             height = Math.min(fixedSize.height, Math.max(360, window.innerHeight - TOP_BAR_HEIGHT - 60));
 
             win.classList.add("fixed-size");
+        } else if (app.type === "iframe") {
+            // External/embedded apps default to a 16:9 window.
+            const maxWidth = Math.max(480, window.innerWidth - 60);
+            const maxHeight = Math.max(320, window.innerHeight - TOP_BAR_HEIGHT - 100);
+
+            ({ width, height } = calculateAspectSize(16, 9, maxWidth, maxHeight));
         } else {
             width = Math.min(DEFAULT_WINDOW_WIDTH, Math.max(320, window.innerWidth - 30));
             height = Math.min(DEFAULT_WINDOW_HEIGHT, Math.max(240, window.innerHeight - TOP_BAR_HEIGHT - 80));
@@ -513,7 +518,7 @@
                         <div class="wallpaper-grid">
                             <button data-wallpaper="src/593257.jpg" style="background-image:url('src/593257.jpg')"></button>
                             <button data-wallpaper="src/5826308.jpg" style="background-image:url('src/5826308.jpg')"></button>
-                            <button data-wallpaper="src/pfp.jpg" style="background-image:url('src/pfp.jpg')"></button>
+                            <button data-wallpaper="src/Gojo.png" style="background-image:url('src/Gojo.png')"></button>
                         </div>
 
                         <h3>Custom Wallpaper</h3>
@@ -1484,6 +1489,7 @@
             }
 
             const fixedSize = FIXED_APP_SIZES[win.dataset.app];
+            const app = apps[win.dataset.app];
 
             if (fixedSize) {
                 // Fixed-size apps (like Calculator) shrink to fit a small
@@ -1492,6 +1498,15 @@
                 // it scales itself the moment the window's own size changes.
                 const width = Math.min(fixedSize.width, Math.max(260, window.innerWidth - 30));
                 const height = Math.min(fixedSize.height, Math.max(360, window.innerHeight - TOP_BAR_HEIGHT - 60));
+
+                win.style.width = `${width}px`;
+                win.style.height = `${height}px`;
+            } else if (app && app.type === "iframe") {
+                // Keep external apps in a 16:9 box as the viewport changes.
+                const maxWidth = Math.max(480, window.innerWidth - 60);
+                const maxHeight = Math.max(320, window.innerHeight - TOP_BAR_HEIGHT - 100);
+
+                const { width, height } = calculateAspectSize(16, 9, maxWidth, maxHeight);
 
                 win.style.width = `${width}px`;
                 win.style.height = `${height}px`;
@@ -1540,6 +1555,24 @@
 
     function escapeAttribute(value) {
         return escapeHTML(value);
+    }
+
+    /* =========================================================
+       ASPECT-RATIO SIZING
+       Used to size external/iframe apps into a standard 16:9
+       window, fitted to whatever space is currently available.
+    ========================================================= */
+
+    function calculateAspectSize(ratioW, ratioH, maxWidth, maxHeight) {
+        let width = maxWidth;
+        let height = (width * ratioH) / ratioW;
+
+        if (height > maxHeight) {
+            height = maxHeight;
+            width = (height * ratioW) / ratioH;
+        }
+
+        return { width, height };
     }
 
     /* =========================================================

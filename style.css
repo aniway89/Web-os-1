@@ -1,5 +1,6 @@
 /* =========================================================
-   GLOBAL
+   DRINOED OS — STYLESHEET
+   v2 — consolidated (each component styled exactly once)
 ========================================================= */
 
 * {
@@ -17,24 +18,24 @@
     --bg: rgba(166, 165, 165, 0.264);
 
     --blue: #3b82f6;
+
+    --top-bar-height: 30px;
 }
 
-
-html,
-body {
+html, body {
     margin: 0;
     padding: 0;
-
     width: 100%;
     height: 100dvh;
-
     overflow: hidden;
-
-    font-family: Noto Sans, system-ui, sans-serif;
-
+    font-family: "Noto Sans", system-ui, sans-serif;
     color: white;
 }
 
+h1, h2, h3, h4, h5, h6 { line-height: 1; }
+
+.flex { display: flex; }
+.ac { align-items: center; }
 
 /* =========================================================
    OS BACKGROUND
@@ -42,49 +43,13 @@ body {
 
 .Os {
     position: fixed;
-
     inset: 0;
-
     width: 100%;
     height: 100%;
-
     overflow: hidden;
-
-    background:
-        url(./src/593257.jpg)
-        no-repeat
-        center center;
-
+    background: url(./src/593257.jpg) no-repeat center center;
     background-size: cover;
 }
-
-
-/* =========================================================
-   TEXT
-========================================================= */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    line-height: 1;
-}
-
-
-/* =========================================================
-   FLEX
-========================================================= */
-
-.flex {
-    display: flex;
-}
-
-.ac {
-    align-items: center;
-}
-
 
 /* =========================================================
    TOP BAR
@@ -92,285 +57,23 @@ h6 {
 
 .top-bar {
     position: fixed;
-
     top: 0;
     left: 0;
-
     width: 100%;
-    height: 30px;
-
+    height: var(--top-bar-height);
     padding: 0 20px;
-
     justify-content: space-between;
-
     font-family: monospace;
-
-    border-bottom:
-        0.3px solid #ffffff32;
-
+    border-bottom: 0.3px solid #ffffff32;
     backdrop-filter: blur(40px);
-
     background-color: var(--bg);
-
     color: #fff;
-
     z-index: 9999;
 }
 
+.Time-day-date-year { gap: 10px; }
 
-.Time-day-date-year {
-    gap: 10px;
-}
-
-
-/* =========================================================
-   WINDOWS
-========================================================= */
-
-.window {
-    min-width: 300px;
-
-    width: 600px;
-
-    min-height: 200px;
-
-    position: absolute;
-
-    top: 10%;
-
-    padding: 10px;
-
-    border-radius: 12px;
-
-    background-color: var(--bg);
-
-    backdrop-filter: blur(40px);
-
-    z-index: 10;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.3),
-        inset 0 0 0 1px rgba(255,255,255,0.06);
-}
-
-
-/* =========================================================
-   WINDOW HEADER
-========================================================= */
-
-.header {
-    position: relative;
-
-    width: 100%;
-
-    height: 28px;
-
-    padding: 0 0 5px 5px;
-
-    flex-shrink: 0;
-
-    cursor: default;
-}
-
-
-.title {
-    position: absolute;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    font-size: 16px;
-
-    font-family: monospace;
-
-    font-weight: 400;
-
-    color: var(--text-w-h);
-
-    pointer-events: none;
-
-    white-space: nowrap;
-}
-
-
-.app-header {
-    cursor: grab;
-}
-
-.app-header:active {
-    cursor: grabbing;
-}
-
-
-/* =========================================================
-   WINDOW BUTTONS
-========================================================= */
-
-.window_button {
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-}
-
-
-.full,
-.min,
-.clos {
-    width: 16px;
-
-    aspect-ratio: 1 / 1;
-
-    border-radius: 50%;
-
-    cursor: pointer;
-
-    flex-shrink: 0;
-}
-
-
-.full {
-    background: oklch(
-        82.8%
-        .189
-        84.429
-    );
-}
-
-
-.min {
-    background: oklch(
-        79.2%
-        .209
-        151.711
-    );
-}
-
-
-.clos {
-    background: #ff6467;
-}
-
-
-/* =========================================================
-   WINDOW CONTENT
-========================================================= */
-
-.container {
-    width: 100%;
-
-    display: flex;
-
-    border-radius: 10px;
-
-    background-color:
-        rgba(254, 254, 254, 0.995);
-
-    color: var(--text-d);
-
-    gap: 10px;
-
-    padding: 10px;
-
-    font-family: monospace;
-
-    word-spacing: 1.9px;
-
-    font-size: 16px;
-}
-
-
-.App_container {
-    min-height: 200px;
-
-    height: calc(100% - 28px);
-
-    padding: 0;
-
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   IFRAME
-========================================================= */
-
-.App_container iframe {
-    width: 100%;
-
-    height: 100%;
-
-    display: block;
-
-    border: none;
-
-    background: white;
-}
-
-
-/* =========================================================
-   INTERNAL APPS
-========================================================= */
-
-.internal-app {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    font-family: monospace;
-
-    color: #222;
-}
-
-
-.internal-app img {
-    width: 80px;
-    height: 80px;
-
-    border-radius: 18px;
-
-    margin-bottom: 15px;
-}
-
-
-.internal-app h2 {
-    margin: 5px 0;
-}
-
-
-.internal-app p {
-    margin: 5px 0;
-
-    opacity: 0.6;
-}
-
-
-/* =========================================================
-   WELCOME WINDOW
-========================================================= */
-
-.pfp {
-    width: 150px;
-    height: 150px;
-
-    aspect-ratio: 1 / 1;
-
-    border-radius: 50%;
-}
-
+.os-name { cursor: pointer; }
 
 /* =========================================================
    DESKTOP
@@ -378,2626 +81,370 @@ h6 {
 
 .desktop_ {
     position: absolute;
-
-    top: 30px;
-
+    top: var(--top-bar-height);
     left: 0;
-
     width: 100%;
-
-    height: calc(100% - 30px);
-
+    height: calc(100% - var(--top-bar-height));
     display: flex;
-
     flex-direction: column;
-
     flex-wrap: wrap;
-
     align-content: flex-start;
-
     overflow: hidden;
 }
 
-
-/* =========================================================
-   DESKTOP APPS
-========================================================= */
-
 .desktopApps {
     cursor: pointer;
-
     user-select: none;
 }
 
-
 .desktopApps > div {
     text-align: center;
-
     padding: 16px;
-
     width: fit-content;
-
-    filter:
-        drop-shadow(
-            0 0 8px black
-        );
+    border-radius: 12px;
+    filter: drop-shadow(0 0 8px black);
 }
-
 
 .desktopApps img {
     width: 64px;
     height: 64px;
-
     border-radius: 16px;
-
     display: block;
-
-    transition:
-        transform 0.15s ease;
+    transition: transform 0.15s ease;
 }
-
 
 .desktopApps p {
     margin: 4px 0 0;
-
     color: #fff;
 }
 
+.desktopApps:hover img { transform: scale(1.04); }
+.desktopApps:active img { transform: scale(0.9); }
 
-/* Hover */
-
-.desktopApps:hover img {
-    transform: scale(1.04);
+.desktopApps.selected {
+    background: rgba(65, 140, 255, .28);
+    border-radius: 12px;
 }
 
+.desktopApps.selected img { transform: scale(.97); }
 
-/* Click */
-
-.desktopApps:active img {
-    transform: scale(0.9);
+.desktopApps.selected p {
+    text-shadow: 0 0 10px rgba(80, 160, 255, .8);
 }
 
+#desktop-selection {
+    position: absolute;
+    pointer-events: none;
+    border: 1px solid rgba(70, 150, 255, .9);
+    background: rgba(60, 130, 255, .18);
+    border-radius: 3px;
+    z-index: 2;
+}
 
 /* =========================================================
-   DOCK
+   WINDOWS
 ========================================================= */
 
-.Dock {
-    position: fixed;
-
-    left: 50%;
-
-    bottom: 10px;
-
-    transform: translateX(-50%);
-
-    width: auto;
-
-    max-width: calc(100vw - 20px);
-
+.window {
+    position: absolute;
+    width: 600px;
+    top: 10%;
     padding: 10px;
+    border-radius: 12px;
+    background-color: var(--bg);
+    backdrop-filter: blur(40px);
+    z-index: 10;
 
-    gap: 20px;
-
-    border:
-        1px solid #ffffff34;
-
-    border-radius: 20px;
-
-    backdrop-filter: blur(10px);
-
-    background: var(--bg);
-
-    z-index: 9998;
-
-    overflow-x: auto;
-
-    overflow-y: hidden;
-}
-
-
-/* =========================================================
-   DOCK APP
-========================================================= */
-
-.app {
-    width: 64px;
-    height: 64px;
-
-    flex: 0 0 64px;
-
-    display: grid;
-
-    place-content: center;
-
-    padding: 5px;
-
-    border:
-        2px solid transparent;
-
-    border-radius: 16px;
-
-    background-color: var(--bg-d);
-
-    cursor: pointer;
-
-    transition:
-        transform 0.2s ease,
-        border-color 0.15s ease,
-        box-shadow 0.15s ease;
-}
-
-
-/* =========================================================
-   ACTIVE DOCK APP
-========================================================= */
-
-.app.active {
-    border-color: var(--blue);
+    resize: both;
+    overflow: hidden;
+    min-width: 300px;
+    min-height: 200px;
+    max-width: none;
+    max-height: none;
 
     box-shadow:
-        0 0 10px
-        rgba(59, 130, 246, 0.65),
-
-        inset 0 0 8px
-        rgba(59, 130, 246, 0.15);
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
-
-
-/* =========================================================
-   DOCK HOVER
-========================================================= */
-
-.app:hover {
-    transform: translateY(-5px);
-}
-
-
-.app:active {
-    transform:
-        translateY(-5px)
-        scale(0.92);
-}
-
-
-/* =========================================================
-   DOCK IMAGE
-========================================================= */
-
-.app .wrap {
-    width: 100%;
-    height: 100%;
-
-    aspect-ratio: 1 / 1;
-
-    border-radius: 11px;
-
-    overflow: hidden;
-
-    display: grid;
-
-    place-content: center;
-}
-
-
-.app .wrap img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    display: block;
-
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   FULLSCREEN WINDOW
-========================================================= */
 
 .window.fullscreen {
     position: fixed !important;
-
-    top: 30px !important;
+    top: var(--top-bar-height) !important;
     left: 0 !important;
-
     width: 100vw !important;
-
-    height:
-        calc(100vh - 30px) !important;
-
+    height: calc(100vh - var(--top-bar-height)) !important;
     border-radius: 0;
+    resize: none !important;
 }
 
+/* Fixed-proportion apps (e.g. Calculator) — standard size, never
+   user-resizable. Their content still scales itself if the window's
+   own size changes (fullscreen, viewport resize), since it's laid
+   out with flexible grid/flex sizing rather than fixed pixels. */
+.window.fixed-size {
+    resize: none;
+}
 
-/* =========================================================
-   HIDDEN / MINIMIZED
-========================================================= */
-
-.window.minimized {
+.window.fixed-size::after {
     display: none;
 }
 
-
-/* =========================================================
-   SMALL SCREENS
-========================================================= */
-
-@media (max-width: 700px) {
-
-    .window {
-        width:
-            calc(100vw - 20px);
-
-        height:
-            calc(100vh - 100px);
-
-        left: 10px !important;
-    }
-
-
-    .Dock {
-        gap: 8px;
-    }
-
-
-    .app {
-        width: 54px;
-        height: 54px;
-
-        flex-basis: 54px;
-    }
-
-}
-
-
-/* =========================================================
-   DRINOED OS - NEW SYSTEM CSS
-========================================================= */
-
-
-/* =========================================================
-   OS BRIGHTNESS
-========================================================= */
-
-/* =========================================================
-   GLOBAL BRIGHTNESS OVERLAY
-========================================================= */
-
-#brightness-overlay {
-    position: fixed;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background: #000;
-
-    /*
-       JS controls this value.
-
-       0   = completely transparent
-       1   = completely black
-    */
-    opacity: 0;
-
+/* Resize-handle affordance (visual only; native `resize` does the work) */
+.window:not(.fullscreen):not(.fixed-size)::after {
+    content: "";
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 14px;
+    height: 14px;
     pointer-events: none;
-
-    z-index: 999999;
-
-    transition: opacity 0.15s ease;
+    opacity: .7;
+    background: linear-gradient(
+        135deg,
+        transparent 0 45%,
+        rgba(255, 255, 255, .45) 46% 52%,
+        transparent 53% 64%,
+        rgba(255, 255, 255, .45) 65% 71%,
+        transparent 72%
+    );
 }
 
-/* =========================================================
-   BOOT SCREEN
-========================================================= */
-
-#boot-screen {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 999999;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #000;
-
-    color: white;
-
-    opacity: 1;
-
-    transition:
-        opacity .65s ease;
-}
-
-
-#boot-screen.boot-finished {
-    opacity: 0;
-}
-
-
-.boot-content {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 14px;
-
-    font-family: monospace;
-
-    text-align: center;
-}
-
-
-.boot-spinner {
-    width: 42px;
-    height: 42px;
-
-    border-radius: 50%;
-
-    border:
-        3px solid
-        rgba(255,255,255,.12);
-
-    border-top-color:
-        rgba(255,255,255,.95);
-
-    animation:
-        boot-spin
-        .8s linear infinite;
-}
-
-
-@keyframes boot-spin {
-
-    to {
-        transform:
-            rotate(360deg);
-    }
-
-}
-
-
-.boot-text {
-    font-size: 15px;
-
-    letter-spacing:
-        .5px;
-}
-
-
-.boot-subtext {
-    font-size: 11px;
-
-    opacity: .45;
-}
-
-
-/* =========================================================
-   WINDOW OPEN
-========================================================= */
+/* Window open / close / minimize animations */
 
 .app-window {
     opacity: 0;
-
-    transform:
-        translateY(12px)
-        scale(.96);
-
+    transform: translateY(12px) scale(.96);
     transition:
         opacity .2s ease,
-        transform .25s cubic-bezier(
-            .22,
-            1,
-            .36,
-            1
-        );
+        transform .25s cubic-bezier(.22, 1, .36, 1);
+    will-change: transform, opacity;
 }
-
 
 .app-window.window-open {
     opacity: 1;
-
-    transform:
-        translateY(0)
-        scale(1);
+    transform: translateY(0) scale(1);
 }
-
-
-/* =========================================================
-   WINDOW CLOSE
-========================================================= */
 
 .app-window.window-closing {
     opacity: 0;
-
-    transform:
-        translateY(10px)
-        scale(.94);
-
+    transform: translateY(10px) scale(.94);
     pointer-events: none;
-
-    transition:
-        opacity .18s ease,
-        transform .22s ease;
+    transition: opacity .18s ease, transform .22s ease;
 }
-
-
-/* =========================================================
-   MINIMIZE
-========================================================= */
 
 .app-window.window-minimizing {
-
     opacity: 0;
-
-    transform:
-        translateY(50px)
-        scale(.65);
-
+    transform: translateY(50px) scale(.65);
     pointer-events: none;
-
     transition:
         opacity .2s ease,
-        transform .25s cubic-bezier(
-            .4,
-            0,
-            .2,
-            1
-        );
+        transform .25s cubic-bezier(.4, 0, .2, 1);
 }
 
+.window.minimized { display: none; }
 
 /* =========================================================
-   DESKTOP SELECTION
+   WINDOW HEADER
 ========================================================= */
 
-#desktop-selection {
-
-    position: absolute;
-
-    pointer-events: none;
-
-    border:
-        1px solid
-        rgba(70,150,255,.9);
-
-    background:
-        rgba(60,130,255,.18);
-
-    border-radius: 3px;
-
-    z-index: 2;
-
-}
-
-
-/* =========================================================
-   SELECTED DESKTOP ICON
-========================================================= */
-
-.desktopApps.selected {
-
-    background:
-        rgba(65,140,255,.28);
-
-    border-radius: 12px;
-
-}
-
-
-.desktopApps.selected img {
-
-    transform:
-        scale(.97);
-
-}
-
-
-.desktopApps.selected p {
-
-    text-shadow:
-        0 0 10px
-        rgba(80,160,255,.8);
-
-}
-
-
-/* =========================================================
-   RIGHT CLICK DESKTOP MENU
-========================================================= */
-
-.desktop-context-menu {
-
-    position: fixed;
-
-    min-width: 210px;
-
-    padding: 7px;
-
-    z-index: 999999;
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    border-radius: 12px;
-
-    background:
-        rgba(30,30,34,.78);
-
-    backdrop-filter:
-        blur(30px)
-        saturate(140%);
-
-    box-shadow:
-        0 20px 60px
-        rgba(0,0,0,.45),
-
-        inset 0 1px 0
-        rgba(255,255,255,.08);
-
-    animation:
-        context-in
-        .14s ease-out;
-}
-
-
-@keyframes context-in {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            scale(.96)
-            translateY(-4px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            scale(1)
-            translateY(0);
-
-    }
-
-}
-
-
-.desktop-context-menu button {
-
-    width: 100%;
-
-    border: none;
-
-    outline: none;
-
-    background: transparent;
-
-    color: white;
-
-    padding: 9px 11px;
-
-    border-radius: 7px;
-
-    text-align: left;
-
-    font-size: 13px;
-
-    cursor: pointer;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-}
-
-
-.desktop-context-menu button span {
-
-    width: 18px;
-
-    text-align: center;
-
-    opacity: .8;
-
-}
-
-
-.desktop-context-menu button:hover {
-
-    background:
-        rgba(70,130,255,.55);
-
-}
-
-
-.context-separator {
-
-    height: 1px;
-
-    margin: 5px 4px;
-
-    background:
-        rgba(255,255,255,.1);
-
-}
-
-
-/* =========================================================
-   DOCK
-========================================================= */
-
-.Dock {
-
-    transition:
-        opacity .2s ease,
-        transform .25s ease;
-
-}
-
-
-.dock-separator {
-
-    width: 1px;
-
-    height: 42px;
-
-    background:
-        rgba(255,255,255,.2);
-
-    margin:
-        0 2px;
-
-}
-
-
-/* =========================================================
-   ACTIVE DOCK APP
-========================================================= */
-
-.Dock .app.active {
-
-    border-color:
-        #3b82f6 !important;
-
-    box-shadow:
-
-        0 0 8px
-        rgba(59,130,246,.7),
-
-        inset 0 0 10px
-        rgba(59,130,246,.15);
-
-}
-
-
-/* =========================================================
-   MINIMIZED DOCK APP
-========================================================= */
-
-.Dock .app.minimized {
-
-    border-color:
-        rgba(190, 190, 190, 0.75) !important;
-
-    box-shadow:
-
-        0 0 8px
-        rgba(250,204,21,.65),
-
-        inset 0 0 8px
-        rgba(250,204,21,.1);
-
-}
-
-
-.Dock .app.minimized::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 6px;
-    height: 6px;
-
-    bottom: 3px;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    border-radius: 50%;
-
-    background:
-        rgba(210, 210, 210, 0.9);
-
-}
-
-
-.Dock .app {
-
+.header {
     position: relative;
-
+    width: 100%;
+    height: 28px;
+    padding: 0 0 5px 5px;
+    flex-shrink: 0;
+    cursor: grab;
 }
 
+.header:active { cursor: grabbing; }
 
-/* =========================================================
-   DYNAMIC DOCK APP REMOVE
-========================================================= */
-
-.dock-removing {
-
-    opacity: 0;
-
-    transform:
-        scale(.5)
-        translateY(10px);
-
-}
-
-
-/* =========================================================
-   APPS BUTTON
-========================================================= */
-
-.apps-dock-button {
-
-    display: flex !important;
-
-    align-items: center;
-
-    justify-content: center;
-
-}
-
-
-.apps-button-inner {
-
-    width: 34px;
-    height: 34px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 6px);
-
-    grid-template-rows:
-        repeat(3, 6px);
-
-    gap: 4px;
-
-    place-content: center;
-
-}
-
-
-.apps-button-inner span {
-
-    width: 6px;
-    height: 6px;
-
-    border-radius: 2px;
-
-    background: white;
-
-    opacity: .9;
-
-}
-
-
-/* =========================================================
-   APP LAUNCHER
-========================================================= */
-
-#app-launcher {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 99990;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background:
-        rgba(0,0,0,.22);
-
-    backdrop-filter:
-        blur(22px)
-        saturate(130%);
-
-    opacity: 0;
-
-    transition:
-        opacity .2s ease;
-}
-
-
-#app-launcher.launcher-open {
-
-    opacity: 1;
-
-}
-
-
-/* =========================================================
-   EVERYTHING BEHIND LAUNCHER
-========================================================= */
-
-body.launcher-active
-.window {
-
-    filter:
-        blur(8px);
-
-    transform:
-        scale(.98);
-
-}
-
-
-body.launcher-active
-.desktop_ {
-
-    filter:
-        blur(8px);
-
-}
-
-
-body.launcher-active
-.Dock {
-
-    opacity: 0;
-
+.title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    font-family: monospace;
+    font-weight: 400;
+    color: var(--text-w-h);
     pointer-events: none;
-
+    white-space: nowrap;
 }
 
-
-body.launcher-active
-.top-bar {
-
-    opacity: .35;
-
-}
-
-
-/* =========================================================
-   LAUNCHER PANEL
-========================================================= */
-
-.launcher-panel {
-
-    width:
-        min(680px, calc(100vw - 30px));
-
-    height:
-        min(620px, calc(100vh - 80px));
-
-    padding: 22px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.14);
-
-    border-radius: 24px;
-
-    background:
-        rgba(25,25,30,.55);
-
-    backdrop-filter:
-        blur(40px);
-
-    box-shadow:
-
-        0 40px 100px
-        rgba(0,0,0,.5),
-
-        inset 0 1px 0
-        rgba(255,255,255,.08);
-
-    transform:
-        translateY(12px)
-        scale(.97);
-
-    transition:
-        transform .25s cubic-bezier(
-            .22,
-            1,
-            .36,
-            1
-        );
-
-}
-
-
-.launcher-open
-.launcher-panel {
-
-    transform:
-        translateY(0)
-        scale(1);
-
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-.launcher-search {
-
-    width: 100%;
-
-    height: 48px;
-
+.window_button {
     display: flex;
-
     align-items: center;
-
-    gap: 10px;
-
-    padding:
-        0 15px;
-
-    margin-bottom: 22px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    border-radius: 14px;
-
-    background:
-        rgba(255,255,255,.08);
-
-}
-
-
-.launcher-search span {
-
-    font-size: 23px;
-
-    opacity: .65;
-
-}
-
-
-.launcher-search input {
-
-    width: 100%;
-
-    border: none;
-
-    outline: none;
-
-    background: transparent;
-
-    color: white;
-
-    font-size: 15px;
-
-    font-family:
-        inherit;
-
-}
-
-
-.launcher-search input::placeholder {
-
-    color:
-        rgba(255,255,255,.45);
-
-}
-
-
-/* =========================================================
-   LAUNCHER APP GRID
-========================================================= */
-
-.launcher-apps {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fill,
-            minmax(105px, 1fr)
-        );
-
-    gap: 12px;
-
-    max-height:
-        calc(100% - 75px);
-
-    overflow-y: auto;
-
-    padding: 5px;
-
-}
-
-
-.launcher-app {
-
-    border: none;
-
-    outline: none;
-
-    min-height: 105px;
-
-    border-radius: 16px;
-
-    background:
-        rgba(255,255,255,.055);
-
-    color: white;
-
-    cursor: pointer;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
     gap: 8px;
-
-    transition:
-        transform .15s ease,
-        background .15s ease;
-
 }
 
-
-.launcher-app:hover {
-
-    background:
-        rgba(70,130,255,.25);
-
-    transform:
-        translateY(-3px);
-
+.full, .min, .clos {
+    width: 16px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
+.full { background: oklch(82.8% .189 84.429); }
+.min  { background: oklch(79.2% .209 151.711); }
+.clos { background: #ff6467; }
 
-.launcher-app:active {
+/* =========================================================
+   WINDOW CONTENT
+========================================================= */
 
-    transform:
-        scale(.94);
-
+.container {
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
+    background-color: rgba(254, 254, 254, 0.995);
+    color: var(--text-d);
+    gap: 10px;
+    padding: 10px;
+    font-family: monospace;
+    word-spacing: 1.9px;
+    font-size: 16px;
 }
 
-
-.launcher-app img {
-
-    width: 54px;
-    height: 54px;
-
-    object-fit: cover;
-
-    border-radius: 13px;
-
+.container h1, .container h2, .container h3,
+.container h4, .container h5, .container h6,
+.container p, .container span, .container label {
+    color: inherit;
 }
 
-
-.launcher-app span {
-
-    font-size: 12px;
-
+.App_container {
+    min-height: 0;
+    height: calc(100% - 28px);
+    padding: 0;
+    overflow: hidden;
 }
 
+.App_container iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+    background: white;
+}
 
-.no-apps {
+/* Generic internal-app placeholder (apps with no dedicated UI) */
 
-    grid-column:
-        1 / -1;
-
+.internal-app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-
-    padding: 60px;
-
-    opacity: .5;
-
+    font-family: monospace;
+    color: #222;
 }
 
+.internal-app img {
+    width: 80px;
+    height: 80px;
+    border-radius: 18px;
+    margin-bottom: 15px;
+}
+
+.internal-app h1, .internal-app h2, .internal-app h3,
+.internal-app h4, .internal-app h5, .internal-app h6,
+.internal-app p, .internal-app span, .internal-app label {
+    color: inherit;
+}
+
+/* Welcome window */
+
+.pfp {
+    width: 150px;
+    height: 150px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+}
 
 /* =========================================================
    NOTEPAD
 ========================================================= */
 
 .notes-app {
-
     width: 100%;
     height: 100%;
-
     display: flex;
-
     flex-direction: column;
-
-    background:
-        #fff;
-
+    background: #fff;
+    color: #222222;
 }
-
 
 #notes-editor {
-
+    flex: 1;
     width: 100%;
     height: 100%;
-
     resize: none;
-
     border: none;
     outline: none;
-
     padding: 18px;
-
-    background:
-        #fff;
-
-    color:
-        #222;
-
-    font-family:
-        monospace;
-
+    background: #fff;
+    color: #222222;
+    font-family: monospace;
     font-size: 15px;
-
     line-height: 1.6;
-
 }
-
 
 .notes-status {
-
-    padding:
-        5px 12px;
-
+    padding: 5px 12px;
     font-size: 10px;
-
-    color:
-        #777;
-
-    border-top:
-        1px solid #eee;
-
+    color: #777;
+    border-top: 1px solid #eee;
 }
 
-
 /* =========================================================
-   TERMINAL
+   TERMINAL (stays dark/light-on-dark by design)
 ========================================================= */
 
 .terminal-app {
-
     width: 100%;
     height: 100%;
-
     display: flex;
-
     flex-direction: column;
-
     padding: 15px;
-
-    background:
-        #090909;
-
-    color:
-        #e8e8e8;
-
-    font-family:
-        monospace;
-
+    background: #090909;
+    color: #e8e8e8;
+    font-family: monospace;
     font-size: 13px;
-
 }
-
 
 .terminal-output {
-
     flex: 1;
-
     overflow-y: auto;
-
     line-height: 1.6;
-
 }
-
 
 .terminal-input-row {
-
     display: flex;
-
     gap: 8px;
-
     align-items: center;
-
+    border-top: 1px solid #ffffff10;
+    padding-top: 10px;
 }
 
-
 .terminal-input-row span {
-
-    color:
-        #69a7ff;
-
+    color: #69a7ff;
     white-space: nowrap;
-
 }
 
-
 #terminal-input {
-
     flex: 1;
-
     border: none;
-
     outline: none;
-
     background: transparent;
-
-    color: white;
-
+    color: #ffffff;
     font: inherit;
-
 }
-
 
 /* =========================================================
    CALCULATOR
 ========================================================= */
 
-.calculator-app {
-
-    width:
-        min(330px, 100%);
-
-    margin: auto;
-
-    padding: 15px;
-
-}
-
-
-.calculator-display {
-
-    width: 100%;
-
-    height: 75px;
-
-    border: none;
-    outline: none;
-
-    border-radius: 15px;
-
-    padding:
-        10px 15px;
-
-    margin-bottom: 12px;
-
-    text-align: right;
-
-    font-family:
-        monospace;
-
-    font-size: 28px;
-
-    background:
-        #171717;
-
-    color:
-        white;
-
-}
-
-
-.calculator-buttons {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 8px;
-
-}
-
-
-.calculator-buttons button {
-
-    height: 55px;
-
-    border: none;
-
-    border-radius: 12px;
-
-    background:
-        #242424;
-
-    color:
-        white;
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-    transition:
-        transform .1s ease,
-        background .1s ease;
-
-}
-
-
-.calculator-buttons button:hover {
-
-    background:
-        #333;
-
-}
-
-
-.calculator-buttons button:active {
-
-    transform:
-        scale(.94);
-
-}
-
-
-.calculator-buttons .zero {
-
-    grid-column:
-        span 2;
-
-}
-
-
-/* =========================================================
-   SETTINGS
-========================================================= */
-
-.settings-app {
-
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-
-    color:
-        #222;
-
-    font-family:
-        system-ui,
-        sans-serif;
-
-}
-
-
-.settings-sidebar {
-
-    width: 170px;
-
-    padding: 12px;
-
-    background:
-        #f1f1f1;
-
-    border-right:
-        1px solid #ddd;
-
-}
-
-
-.settings-tab {
-
-    width: 100%;
-
-    border: none;
-
-    padding:
-        10px;
-
-    margin-bottom: 5px;
-
-    border-radius: 8px;
-
-    background:
-        transparent;
-
-    text-align: left;
-
-    cursor: pointer;
-
-}
-
-
-.settings-tab:hover {
-
-    background:
-        #ddd;
-
-}
-
-
-.settings-tab.active {
-
-    background:
-        #dce9ff;
-
-    color:
-        #2468d7;
-
-}
-
-
-.settings-content {
-
-    flex: 1;
-
-    padding: 25px;
-
-    overflow-y: auto;
-
-    background:
-        #fff;
-
-}
-
-
-.settings-section h2 {
-
-    margin-top: 0;
-
-}
-
-
-.settings-section h3 {
-
-    margin-top: 28px;
-
-}
-
-
-.settings-section label {
-
-    display: block;
-
-    margin-bottom: 8px;
-
-}
-
-
-#brightness-control {
-
-    width: 100%;
-
-}
-
-
-.wallpaper-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 10px;
-
-}
-
-
-.wallpaper-grid button {
-
-    height: 70px;
-
-    border: 2px solid transparent;
-
-    border-radius: 10px;
-
-    background-size: cover;
-
-    background-position: center;
-
-    cursor: pointer;
-
-}
-
-
-.wallpaper-grid button:hover {
-
-    border-color:
-        #3b82f6;
-
-}
-
-
-#wallpaper-file {
-
-    max-width: 100%;
-
-}
-
-
-.settings-action {
-
-    padding:
-        10px 15px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background:
-        #eee;
-
-    cursor: pointer;
-
-}
-
-
-.hidden {
-
-    display: none !important;
-
-}
-
-
-/* =========================================================
-   FILES
-========================================================= */
-
-.files-app {
-
-    width: 100%;
-    height: 100%;
-
-    background: #fff;
-
-    color: #222;
-
-}
-
-
-.files-toolbar {
-
-    padding:
-        14px;
-
-    border-bottom:
-        1px solid #eee;
-
-}
-
-
-.files-empty {
-
-    height:
-        calc(100% - 50px);
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    opacity: .6;
-
-}
-
-
-.files-empty img {
-
-    width: 70px;
-    height: 70px;
-
-    margin-bottom: 10px;
-
-}
-
-
-/* =========================================================
-   OS MENU
-========================================================= */
-
-.os-menu {
-
-    position: fixed;
-
-    min-width: 190px;
-
-    z-index: 999999;
-
-    padding: 7px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    border-radius: 12px;
-
-    background:
-        rgba(25,25,28,.8);
-
-    backdrop-filter:
-        blur(30px);
-
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.45);
-
-    animation:
-        context-in
-        .14s ease-out;
-
-}
-
-
-.os-menu-title {
-
-    padding:
-        8px 10px;
-
-    font-size: 11px;
-
-    opacity: .5;
-
-}
-
-
-.os-menu button {
-
-    width: 100%;
-
-    padding:
-        10px;
-
-    border: none;
-
-    border-radius: 7px;
-
-    background: transparent;
-
-    color: white;
-
-    text-align: left;
-
-    cursor: pointer;
-
-}
-
-
-.os-menu button:hover {
-
-    background:
-        rgba(70,130,255,.5);
-
-}
-
-
-#shutdown-os:hover {
-
-    background:
-        rgba(255,70,70,.55);
-
-}
-
-
-/* =========================================================
-   SHUTDOWN SCREEN
-========================================================= */
-
-#shutdown-screen {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999999;
-
-    background:
-        #000;
-
-    color: white;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    font-family:
-        monospace;
-
-    animation:
-        shutdown-in
-        .5s ease forwards;
-
-}
-
-
-@keyframes shutdown-in {
-
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-
-}
-
-
-.shutdown-logo {
-
-    width: 60px;
-    height: 60px;
-
-    display: grid;
-
-    place-items: center;
-
-    margin: auto;
-
-    border-radius: 18px;
-
-    background:
-        #171717;
-
-    font-size: 25px;
-
-    margin-bottom: 20px;
-
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-    .launcher-panel {
-
-        width:
-            calc(100vw - 20px);
-
-        height:
-            calc(100vh - 50px);
-
-        padding: 15px;
-
-    }
-
-
-    .launcher-apps {
-
-        grid-template-columns:
-            repeat(3, 1fr);
-
-    }
-
-
-    .settings-sidebar {
-
-        width: 120px;
-
-    }
-
-
-    .Dock {
-
-        gap: 7px;
-
-    }
-
-
-    .dock-separator {
-
-        margin: 0;
-
-    }
-
-}
-
-/* =========================================================
-   DOCK APP STATES
-========================================================= */
-
-/* Currently focused app */
-.app.active {
-    border: 2px solid var(--blue);
-    box-shadow:
-        0 0 10px rgba(59, 130, 246, 0.55),
-        inset 0 0 8px rgba(59, 130, 246, 0.12);
-
-    position: relative;
-}
-
-
-/* Minimized app */
-.app.minimized-app {
-    border: 2px solid rgba(190, 190, 190, 0.75);
-
-    position: relative;
-
-    box-shadow:
-        0 0 7px rgba(180, 180, 180, 0.2),
-        inset 0 0 5px rgba(255, 255, 255, 0.05);
-}
-
-
-/* Small dot at the bottom center */
-.app.minimized-app::after {
-    content: "";
-
-    position: absolute;
-
-    bottom: 3px;
-    left: 50%;
-
-    width: 5px;
-    height: 5px;
-
-    transform: translateX(-50%);
-
-    border-radius: 50%;
-
-    background: rgba(210, 210, 210, 0.9);
-
-    box-shadow:
-        0 0 5px rgba(255, 255, 255, 0.35);
-
-    pointer-events: none;
-}
-
-
-/* Focused app always gets blue instead of gray */
-.app.active.minimized-app {
-    border-color: var(--blue);
-
-    box-shadow:
-        0 0 10px rgba(59, 130, 246, 0.65),
-        inset 0 0 8px rgba(59, 130, 246, 0.15);
-}
-
-
-/* Remove minimized dot when focused */
-.app.active.minimized-app::after {
-    background: var(--blue);
-
-    box-shadow:
-        0 0 6px rgba(59, 130, 246, 0.7);
-}
-/* =========================================================
-   RESIZABLE WINDOWS
-========================================================= */
-
-.window {
-    resize: both;
-    overflow: hidden;
-
-    min-width: 300px;
-    min-height: 200px;
-
-    max-width: none;
-    max-height: none;
-}
-
-/* Resize handle appearance */
-.window::after {
-    content: "";
-    position: absolute;
-
-    right: 3px;
-    bottom: 3px;
-
-    width: 14px;
-    height: 14px;
-
-    background:
-        linear-gradient(
-            135deg,
-            transparent 0 45%,
-            rgba(255,255,255,.35) 46% 52%,
-            transparent 53% 65%,
-            rgba(255,255,255,.35) 66% 72%,
-            transparent 73%
-        );
-
-    opacity: .7;
-    pointer-events: none;
-}
-
-/* Fullscreen windows should not be manually resized */
-.window.fullscreen {
-    resize: none;
-}
-
-
-/* =========================================================
-   BETTER APP CONTENT SIZING
-========================================================= */
-
-.App_container {
-    min-height: 0;
-    height: calc(100% - 28px);
-
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   CALCULATOR
-========================================================= */
-
-.calculator-app {
-    width: 100%;
-    height: 100%;
-
-    max-width: 420px;
-
-    margin: 0 auto;
-
-    padding: 18px;
-
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    gap: 14px;
-
-    color: #171717;
-    font-family: system-ui, sans-serif;
-}
-
-
-/* Display */
-
-.calculator-display {
-    width: 100%;
-    height: 82px;
-
-    flex-shrink: 0;
-
-    padding: 12px 18px;
-
-    border: none;
-    outline: none;
-
-    border-radius: 18px;
-
-    background: #171717;
-    color: #ffffff;
-
-    text-align: right;
-
-    font-family: "Noto Sans", system-ui, sans-serif;
-    font-size: clamp(24px, 5vw, 36px);
-    font-weight: 500;
-
-    box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.06),
-        0 8px 25px rgba(0,0,0,.15);
-}
-
-
-/* Button grid */
-
-.calculator-buttons {
-    width: 100%;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-    grid-auto-rows: minmax(55px, 1fr);
-
-    gap: 9px;
-
-    flex: 1;
-}
-
-
-/* Buttons */
-
-.calculator-buttons button {
-    min-width: 0;
-    min-height: 0;
-
-    border: none;
-    outline: none;
-
-    border-radius: 15px;
-
-    background: #eeeeee;
-    color: #171717;
-
-    font-family: "Noto Sans", system-ui, sans-serif;
-
-    font-size: clamp(15px, 2.5vw, 19px);
-    font-weight: 500;
-
-    cursor: pointer;
-
-    transition:
-        transform .1s ease,
-        background .15s ease,
-        box-shadow .15s ease;
-}
-
-
-/* Hover */
-
-.calculator-buttons button:hover {
-    background: #dddddd;
-
-    box-shadow:
-        0 5px 15px rgba(0,0,0,.08);
-}
-
-
-/* Click */
-
-.calculator-buttons button:active {
-    transform: scale(.92);
-}
-
-
-/* Operators */
-
-.calculator-buttons button.operator {
-    background: #dbe8ff;
-    color: #2468d7;
-}
-
-
-/* Equals */
-
-.calculator-buttons button.equals {
-    background: #3b82f6;
-    color: #ffffff;
-}
-
-
-/* Clear */
-
-.calculator-buttons button.clear {
-    background: #ffe0e0;
-    color: #c62828;
-}
-
-
-/* Zero */
-
-.calculator-buttons .zero {
-    grid-column: span 2;
-}
-
-
-/* =========================================================
-   FIX INTERNAL APP TEXT COLORS
-========================================================= */
-
-.internal-app {
-    color: #171717;
-}
-
-.internal-app h1,
-.internal-app h2,
-.internal-app h3,
-.internal-app h4,
-.internal-app h5,
-.internal-app h6,
-.internal-app p,
-.internal-app span,
-.internal-app label {
-    color: inherit;
-}
-
-
-/* Settings */
-
-.settings-app {
-    color: #171717;
-}
-
-.settings-app h1,
-.settings-app h2,
-.settings-app h3,
-.settings-app h4,
-.settings-app h5,
-.settings-app h6,
-.settings-app p,
-.settings-app label {
-    color: #171717;
-}
-
-
-/* Files */
-
-.files-app {
-    color: #222222;
-}
-
-.files-app h1,
-.files-app h2,
-.files-app h3,
-.files-app h4,
-.files-app h5,
-.files-app h6,
-.files-app p,
-.files-app span {
-    color: inherit;
-}
-
-
-/* Notepad */
-
-.notes-app {
-    color: #222222;
-}
-
-
-/* Keep dark applications white */
-
-.terminal-app,
-.terminal-app * {
-    color: #e8e8e8;
-}
-
-.terminal-input-row span {
-    color: #69a7ff !important;
-}
-
-#terminal-input {
-    color: #ffffff !important;
-}
-
-
-/* =========================================================
-   RESPONSIVE CALCULATOR
-========================================================= */
-
-@media (max-width: 500px) {
-
-    .calculator-app {
-        padding: 12px;
-        gap: 10px;
-    }
-
-    .calculator-display {
-        height: 65px;
-        border-radius: 14px;
-    }
-
-    .calculator-buttons {
-        gap: 6px;
-        grid-auto-rows: minmax(48px, 1fr);
-    }
-
-    .calculator-buttons button {
-        border-radius: 12px;
-    }
-}
-
-
-/* =========================================================
-   DRINOED OS - FINAL WINDOW / CALCULATOR / SETTINGS FIX
-========================================================= */
-
-/* ---------- RESIZABLE WINDOWS ---------- */
-
-.window {
-    resize: both;
-    overflow: hidden;
-
-    min-width: 300px;
-    min-height: 200px;
-
-    max-width: none;
-    max-height: none;
-}
-
-.window.fullscreen {
-    resize: none !important;
-}
-
-
-/* ---------- CALCULATOR ---------- */
-
-.calculator-app {
-    width: 100%;
-    height: 100%;
-
-    padding: 18px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    gap: 14px;
-
-    box-sizing: border-box;
-
-    background: #f7f7f7;
-    color: #171717;
-
-    font-family:
-        "Noto Sans",
-        system-ui,
-        sans-serif;
-}
-
-.calculator-display {
-    width: 100%;
-    height: 82px;
-
-    flex-shrink: 0;
-
-    box-sizing: border-box;
-
-    border: none;
-    outline: none;
-
-    border-radius: 18px;
-
-    padding: 10px 18px;
-
-    background: #171717;
-    color: #ffffff !important;
-
-    text-align: right;
-
-    font-family: monospace;
-    font-size: clamp(25px, 4vw, 38px);
-    font-weight: 500;
-
-    box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.06),
-        0 5px 20px rgba(0,0,0,.12);
-}
-
-.calculator-buttons {
-    width: 100%;
-
-    flex: 1;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-    grid-template-rows:
-        repeat(5, minmax(48px, 1fr));
-
-    gap: 9px;
-}
-
-.calculator-buttons button {
-    width: 100%;
-    height: 100%;
-
-    min-width: 0;
-    min-height: 0;
-
-    border: none;
-    outline: none;
-
-    border-radius: 15px;
-
-    background: #e9e9e9;
-    color: #171717 !important;
-
-    font-family:
-        "Noto Sans",
-        system-ui,
-        sans-serif;
-
-    font-size: clamp(15px, 2.5vw, 19px);
-    font-weight: 550;
-
-    cursor: pointer;
-
-    transition:
-        transform .1s ease,
-        background .15s ease,
-        box-shadow .15s ease;
-}
-
-.calculator-buttons button:hover {
-    background: #dcdcdc;
-}
-
-.calculator-buttons button:active {
-    transform: scale(.92);
-}
-
-
-/* operators */
-
-.calculator-buttons button.operator {
-    background: #dce9ff;
-    color: #2468d7 !important;
-}
-
-.calculator-buttons button.operator:hover {
-    background: #cbdcff;
-}
-
-
-/* clear */
-
-.calculator-buttons button.clear {
-    background: #ffe1e1;
-    color: #d22f35 !important;
-}
-
-
-/* equals */
-
-.calculator-buttons button.equals {
-    background: #3b82f6;
-    color: #ffffff !important;
-}
-
-.calculator-buttons button.equals:hover {
-    background: #2563eb;
-}
-
-
-/* zero */
-
-.calculator-buttons button.zero {
-    grid-column: span 2;
-}
-
-
-/* ---------- SETTINGS TEXT FIX ---------- */
-
-.settings-app {
-    color: #171717 !important;
-    background: #ffffff;
-}
-
-.settings-app * {
-    color: #171717;
-}
-
-.settings-app h1,
-.settings-app h2,
-.settings-app h3,
-.settings-app h4,
-.settings-app h5,
-.settings-app h6,
-.settings-app p,
-.settings-app label,
-.settings-app span {
-    color: #171717 !important;
-}
-
-.settings-app .settings-tab {
-    color: #171717 !important;
-}
-
-.settings-app .settings-tab.active {
-    color: #2468d7 !important;
-}
-
-.settings-app input {
-    color: #171717;
-}
-
-.settings-app button {
-    color: #171717;
-}
-
-
-/* wallpaper buttons don't need text */
-
-.wallpaper-grid button {
-    color: transparent !important;
-}
-
-
-/* ---------- GENERAL LIGHT APP TEXT ---------- */
-
-.container {
-    color: #333333;
-}
-
-.container h1,
-.container h2,
-.container h3,
-.container h4,
-.container h5,
-.container h6,
-.container p,
-.container span,
-.container label {
-    color: #333333;
-}
-
-
-/* ---------- FILES ---------- */
-
-.files-app,
-.files-app * {
-    color: #222222;
-}
-
-
-/* ---------- NOTES ---------- */
-
-.notes-app {
-    color: #222222;
-}
-
-#notes-editor {
-    color: #222222 !important;
-}
-
-
-/* ---------- DARK TERMINAL ---------- */
-
-.terminal-app,
-.terminal-app * {
-    color: #e8e8e8;
-}
-
-#terminal-input {
-    color: #ffffff !important;
-}
-
-
-/* ---------- DOCK FULLSCREEN ANIMATION ---------- */
-
-.Dock {
-    transition:
-        transform .35s cubic-bezier(.22,1,.36,1),
-        opacity .25s ease;
-}
-
-.Dock.dock-hidden-fullscreen {
-    transform:
-        translateX(-50%)
-        translateY(150px);
-
-    opacity: 0;
-    pointer-events: none;
-}
-
-
-/* ---------- WINDOW STATES ---------- */
-
-.window.app-window {
-    will-change: transform, opacity;
-}
-
-
-/* ---------- RESIZE HANDLE ---------- */
-
-.window:not(.fullscreen)::after {
-    content: "";
-
-    position: absolute;
-
-    right: 3px;
-    bottom: 3px;
-
-    width: 15px;
-    height: 15px;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            135deg,
-            transparent 0 45%,
-            rgba(255,255,255,.45) 46% 52%,
-            transparent 53% 64%,
-            rgba(255,255,255,.45) 65% 71%,
-            transparent 72%
-        );
-
-    opacity: .75;
-}
-
-/* =========================================================
-   FINAL STABLE WINDOW MANAGER RULES
-   ========================================================= */
-
-.window {
-    position: absolute;
-    min-width: 300px;
-    min-height: 200px;
-    max-width: none;
-    max-height: none;
-    resize: both;
-    overflow: hidden;
-}
-
-.window.fullscreen {
-    position: fixed !important;
-    top: 30px !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: calc(100vh - 30px) !important;
-    resize: none !important;
-    border-radius: 0;
-}
-
-.window:not(.fullscreen)::after {
-    pointer-events: none;
-}
-
-#windowheader,
-#noteheader {
-    cursor: grab;
-}
-
-#windowheader:active,
-#noteheader:active {
-    cursor: grabbing;
-}
-
-/* Settings must always use readable dark text. */
-.settings-app {
-    color: #171717 !important;
-    background: #ffffff;
-}
-
-.settings-app * {
-    color: #171717;
-}
-
-.settings-app .settings-tab.active {
-    color: #2468d7 !important;
-}
-
-.settings-app input[type="range"] {
-    accent-color: #3b82f6;
-}
-
-.settings-app input[type="file"] {
-    color: #171717 !important;
-    background: #ffffff;
-}
-
-.settings-app .settings-action {
-    color: #171717 !important;
-}
-
-/* Calculator */
 .calculator-app {
     width: 100%;
     height: 100%;
@@ -3024,11 +471,14 @@ body.launcher-active
     border-radius: 18px;
     padding: 10px 18px;
     background: #171717;
-    color: #ffffff !important;
+    color: #ffffff;
     text-align: right;
     font-family: monospace;
     font-size: clamp(25px, 4vw, 38px);
     font-weight: 500;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .06),
+        0 5px 20px rgba(0, 0, 0, .12);
 }
 
 .calculator-buttons {
@@ -3050,7 +500,7 @@ body.launcher-active
     outline: none;
     border-radius: 15px;
     background: #e9e9e9;
-    color: #171717 !important;
+    color: #171717;
     font-family: "Noto Sans", system-ui, sans-serif;
     font-size: clamp(15px, 2.5vw, 19px);
     font-weight: 550;
@@ -3058,82 +508,678 @@ body.launcher-active
     transition: transform .1s ease, background .15s ease;
 }
 
-.calculator-buttons button:hover {
-    background: #dcdcdc;
-}
-
-.calculator-buttons button:active {
-    transform: scale(.92);
-}
+.calculator-buttons button:hover { background: #dcdcdc; }
+.calculator-buttons button:active { transform: scale(.92); }
 
 .calculator-buttons button.operator {
     background: #dce9ff;
-    color: #2468d7 !important;
+    color: #2468d7;
 }
+.calculator-buttons button.operator:hover { background: #cbdcff; }
 
 .calculator-buttons button.clear {
     background: #ffe1e1;
-    color: #d22f35 !important;
+    color: #d22f35;
 }
 
 .calculator-buttons button.equals {
     background: #3b82f6;
-    color: #ffffff !important;
+    color: #ffffff;
+}
+.calculator-buttons button.equals:hover { background: #2563eb; }
+
+.calculator-buttons button.zero { grid-column: span 2; }
+
+@media (max-width: 500px) {
+    .calculator-app { padding: 12px; gap: 10px; }
+    .calculator-display { height: 65px; border-radius: 14px; }
+    .calculator-buttons { gap: 6px; grid-template-rows: repeat(5, minmax(42px, 1fr)); }
+    .calculator-buttons button { border-radius: 12px; }
 }
 
-.calculator-buttons button.zero {
-    grid-column: span 2;
+/* =========================================================
+   SETTINGS
+   (single source of truth for text color — always dark on
+   the light settings background, regardless of the OS theme)
+========================================================= */
+
+.settings-app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: #ffffff;
+    color: #171717;
+    font-family: system-ui, sans-serif;
 }
 
-/* Fullscreen hides the Dock with a clean downward slide. */
+.settings-app * { color: inherit; }
+
+.settings-sidebar {
+    width: 170px;
+    padding: 12px;
+    background: #f1f1f1;
+    border-right: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+.settings-tab {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+}
+
+.settings-tab:hover { background: #ddd; }
+
+.settings-tab.active {
+    background: #dce9ff;
+    color: #2468d7;
+}
+
+.settings-content {
+    flex: 1;
+    padding: 25px;
+    overflow-y: auto;
+    background: #fff;
+}
+
+.settings-section h2 { margin-top: 0; }
+.settings-section h3 { margin-top: 28px; }
+.settings-section label { display: block; margin-bottom: 8px; }
+
+.settings-section input[type="range"] {
+    width: 100%;
+    margin: 0 0 25px;
+    accent-color: #3b82f6;
+}
+
+.settings-section input[type="file"] {
+    color: #171717;
+    background: #ffffff;
+    max-width: 100%;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+/* macOS-style "Choose File" button */
+
+.settings-section input[type="file"]::file-selector-button,
+.settings-section input[type="file"]::-webkit-file-upload-button {
+    margin-right: 12px;
+    padding: 6px 14px;
+    border: 1px solid #d0d0d0;
+    border-radius: 7px;
+
+    background: linear-gradient(#fefefe, #e8e8e8);
+    color: #171717;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .8) inset,
+        0 1px 2px rgba(0, 0, 0, .08);
+
+    transition: background .12s ease, box-shadow .12s ease, transform .05s ease;
+}
+
+.settings-section input[type="file"]::file-selector-button:hover,
+.settings-section input[type="file"]::-webkit-file-upload-button:hover {
+    background: linear-gradient(#ffffff, #ececec);
+}
+
+.settings-section input[type="file"]::file-selector-button:active,
+.settings-section input[type="file"]::-webkit-file-upload-button:active {
+    background: linear-gradient(#e4e4e4, #d8d8d8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1) inset;
+    transform: translateY(0.5px);
+}
+
+.wallpaper-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.wallpaper-grid button {
+    height: 70px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    color: transparent; /* these are swatches, not labels */
+}
+
+.wallpaper-grid button:hover { border-color: #3b82f6; }
+
+.settings-action {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: #eee;
+    color: #171717;
+    cursor: pointer;
+}
+
+.hidden { display: none !important; }
+
+/* =========================================================
+   FILES
+========================================================= */
+
+.files-app {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    color: #222222;
+}
+
+.files-app * { color: inherit; }
+
+.files-toolbar {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.files-empty {
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: .6;
+}
+
+.files-empty img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+/* =========================================================
+   DOCK
+========================================================= */
+
 .Dock {
+    position: fixed;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: calc(100vw - 20px);
+    padding: 10px;
+    gap: 20px;
+    border: 1px solid #ffffff34;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    background: var(--bg);
+    z-index: 9998;
+    overflow-x: auto;
+    overflow-y: hidden;
+
     transition:
         transform .35s cubic-bezier(.22, 1, .36, 1),
         opacity .25s ease;
 }
 
+/* Slides the Dock down and fades it out while any app is fullscreen */
 .Dock.dock-hidden-fullscreen {
     transform: translateX(-50%) translateY(150px);
     opacity: 0;
     pointer-events: none;
 }
 
-/* Minimized apps stay independently gray. */
-.Dock .app.minimized-app {
-    border-color: rgba(190, 190, 190, 0.75) !important;
+.dock-separator {
+    width: 1px;
+    height: 42px;
+    background: rgba(255, 255, 255, .2);
+    margin: 0 2px;
+    flex: 0 0 1px;
+}
+
+.app {
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+    position: relative;
+    display: grid;
+    place-content: center;
+    padding: 5px;
+    border: 2px solid transparent;
+    border-radius: 16px;
+    background-color: var(--bg-d);
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.app:hover { transform: translateY(-5px); }
+.app:active { transform: translateY(-5px) scale(0.92); }
+
+.app .wrap {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 11px;
+    overflow: hidden;
+    display: grid;
+    place-content: center;
+}
+
+.app .wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+}
+
+/* Currently focused app */
+.app.active {
+    border-color: var(--blue);
+    box-shadow:
+        0 0 10px rgba(59, 130, 246, 0.55),
+        inset 0 0 8px rgba(59, 130, 246, 0.12);
+}
+
+/* Minimized app */
+.app.minimized-app {
+    border-color: rgba(190, 190, 190, 0.75);
     box-shadow:
         0 0 7px rgba(180, 180, 180, 0.2),
-        inset 0 0 5px rgba(255,255,255,.05);
+        inset 0 0 5px rgba(255, 255, 255, 0.05);
 }
 
-.Dock .app.minimized-app::after {
-    background: rgba(210,210,210,.9);
-    box-shadow: 0 0 5px rgba(255,255,255,.35);
+.app.minimized-app::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: rgba(210, 210, 210, 0.9);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.35);
+    pointer-events: none;
 }
 
-.Dock .app.active {
-    border-color: var(--blue) !important;
+/* Focused + minimized: blue wins, dot goes blue too */
+.app.active.minimized-app {
+    border-color: var(--blue);
+    box-shadow:
+        0 0 10px rgba(59, 130, 246, 0.65),
+        inset 0 0 8px rgba(59, 130, 246, 0.15);
 }
 
-.Dock .app.active.minimized-app {
-    border-color: var(--blue) !important;
+.app.active.minimized-app::after {
+    background: var(--blue);
+    box-shadow: 0 0 6px rgba(59, 130, 246, 0.7);
 }
 
-/* Desktop menu stays above windows and is easy to read. */
+.dock-removing {
+    opacity: 0;
+    transform: scale(.5) translateY(10px);
+}
+
+/* Apps launcher button (grid-of-dots icon) */
+
+.apps-dock-button { display: flex !important; align-items: center; justify-content: center; }
+
+.apps-button-inner {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    grid-template-columns: repeat(3, 6px);
+    grid-template-rows: repeat(3, 6px);
+    gap: 4px;
+    place-content: center;
+}
+
+.apps-button-inner span {
+    width: 6px;
+    height: 6px;
+    border-radius: 2px;
+    background: white;
+    opacity: .9;
+}
+
+/* =========================================================
+   APP LAUNCHER
+========================================================= */
+
+#app-launcher {
+    position: fixed;
+    inset: 0;
+    z-index: 1500000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .22);
+    backdrop-filter: blur(22px) saturate(130%);
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+
+#app-launcher.launcher-open { opacity: 1; }
+
+#app-launcher, #app-launcher * { color: #ffffff; }
+
+body.launcher-active .window {
+    filter: blur(8px);
+    transform: scale(.98);
+    transition: filter .2s ease, transform .2s ease;
+}
+
+body.launcher-active .desktop_ { filter: blur(8px); }
+
+body.launcher-active .Dock {
+    opacity: 0;
+    pointer-events: none;
+}
+
+body.launcher-active .top-bar { opacity: .35; }
+
+.launcher-panel {
+    width: min(680px, calc(100vw - 30px));
+    height: min(620px, calc(100vh - 80px));
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 24px;
+    background: rgba(25, 25, 30, .72);
+    backdrop-filter: blur(40px);
+    box-shadow:
+        0 40px 100px rgba(0, 0, 0, .5),
+        inset 0 1px 0 rgba(255, 255, 255, .08);
+    transform: translateY(12px) scale(.97);
+    transition: transform .25s cubic-bezier(.22, 1, .36, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.launcher-open .launcher-panel {
+    transform: translateY(0) scale(1);
+}
+
+.launcher-search {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 15px;
+    margin-bottom: 22px;
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .08);
+    flex-shrink: 0;
+}
+
+.launcher-search span { font-size: 23px; opacity: .65; }
+
+.launcher-search input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+.launcher-search input::placeholder { color: rgba(255, 255, 255, .45); }
+
+.launcher-apps {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+    gap: 12px;
+    flex: 1;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.launcher-app {
+    border: none;
+    outline: none;
+    min-height: 105px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .055);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform .15s ease, background .15s ease;
+}
+
+.launcher-app:hover {
+    background: rgba(70, 130, 255, .25);
+    transform: translateY(-3px);
+}
+
+.launcher-app:active { transform: scale(.94); }
+
+.launcher-app img {
+    width: 54px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 13px;
+}
+
+.launcher-app span { font-size: 12px; }
+
+.no-apps {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px;
+    opacity: .5;
+}
+
+/* =========================================================
+   RIGHT-CLICK / OS MENUS
+   (shared look — both stay above every window)
+========================================================= */
+
 .desktop-context-menu,
 .os-menu {
-    color: #ffffff;
+    position: fixed;
+    min-width: 210px;
+    padding: 7px;
     z-index: 1700000;
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 12px;
+    background: rgba(30, 30, 34, .88);
+    backdrop-filter: blur(30px) saturate(140%);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .45),
+        inset 0 1px 0 rgba(255, 255, 255, .08);
+    animation: context-in .14s ease-out;
+}
+
+@keyframes context-in {
+    from { opacity: 0; transform: scale(.96) translateY(-4px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .desktop-context-menu button,
 .os-menu button {
-    color: #ffffff !important;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #ffffff;
+    padding: 9px 11px;
+    border-radius: 7px;
+    text-align: left;
+    font-size: 13px;
     font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Do not let the launcher itself inherit the desktop text rules. */
-#app-launcher,
-#app-launcher * {
-    color: #ffffff;
+.desktop-context-menu button span,
+.os-menu button span {
+    width: 18px;
+    text-align: center;
+    opacity: .8;
+}
+
+.desktop-context-menu button:hover,
+.os-menu button:hover {
+    background: rgba(70, 130, 255, .55);
+}
+
+#shutdown-os:hover {
+    background: rgba(255, 70, 70, .55);
+}
+
+.context-separator {
+    height: 1px;
+    margin: 5px 4px;
+    background: rgba(255, 255, 255, .1);
+}
+
+.os-menu-title {
+    padding: 8px 11px;
+    font-size: 11px;
+    opacity: .55;
+}
+
+/* =========================================================
+   BRIGHTNESS OVERLAY
+========================================================= */
+
+#brightness-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0;           /* JS controls this: 0 = clear, 1 = black */
+    pointer-events: none;
+    z-index: 999999;
+    transition: opacity 0.15s ease;
+}
+
+/* =========================================================
+   BOOT SCREEN
+========================================================= */
+
+#boot-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 2000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    color: white;
+    opacity: 1;
+    transition: opacity .65s ease;
+}
+
+#boot-screen.boot-finished { opacity: 0; pointer-events: none; }
+
+.boot-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    font-family: monospace;
+    text-align: center;
+}
+
+.boot-spinner {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, .12);
+    border-top-color: rgba(255, 255, 255, .95);
+    animation: boot-spin .8s linear infinite;
+}
+
+@keyframes boot-spin { to { transform: rotate(360deg); } }
+
+.boot-text { font-size: 15px; letter-spacing: .5px; }
+.boot-subtext { font-size: 11px; opacity: .45; }
+
+/* =========================================================
+   SHUTDOWN SCREEN
+========================================================= */
+
+#shutdown-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 2100000;
+    background: #000;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: monospace;
+    animation: shutdown-in .5s ease forwards;
+}
+
+@keyframes shutdown-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.shutdown-logo {
+    width: 60px;
+    height: 60px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 20px;
+    border-radius: 18px;
+    background: #171717;
+    font-size: 25px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+    .window {
+        width: calc(100vw - 20px);
+        height: calc(100vh - 100px);
+        left: 10px !important;
+    }
+
+    .Dock { gap: 8px; }
+
+    .app {
+        width: 54px;
+        height: 54px;
+        flex-basis: 54px;
+    }
+
+    .launcher-panel {
+        width: calc(100vw - 20px);
+        height: calc(100vh - 50px);
+        padding: 15px;
+    }
+
+    .launcher-apps { grid-template-columns: repeat(3, 1fr); }
+
+    .settings-sidebar { width: 120px; }
+
+    .dock-separator { margin: 0; }
 }
