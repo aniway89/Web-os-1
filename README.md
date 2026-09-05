@@ -5,7 +5,7 @@ A fun little desktop OS that runs entirely in your browser — built with just H
 ## Screenshots
 
 <p align="center">
-  <img src="ss/WEbos.png" alt="Drinoed OS Desktop Interface" width="80%">
+  <img src="SS/WEbos.png" alt="Drinoed OS Desktop Interface" width="80%">
 </p>
 ## Features
 
