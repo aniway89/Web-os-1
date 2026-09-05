@@ -2,6 +2,11 @@
 
 A fun little desktop OS that runs entirely in your browser — built with just HTML, CSS, and JavaScript. No frameworks, no build tools, no installs.
 
+## Screenshots
+
+<p align="center">
+  <img src="ss/WEbos.png" alt="Drinoed OS Desktop Interface" width="80%">
+</p>
 ## Features
 
 - 🖥️ **Desktop** — click app icons to open them, drag to select multiple
