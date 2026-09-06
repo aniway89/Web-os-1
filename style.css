@@ -30,6 +30,7 @@ html, body {
     overflow: hidden;
     font-family: "Noto Sans", system-ui, sans-serif;
     color: white;
+    user-select: none;
 }
 
 h1, h2, h3, h4, h5, h6 { line-height: 1; }
@@ -1182,4 +1183,7 @@ body.launcher-active .top-bar { opacity: .35; }
     .settings-sidebar { width: 120px; }
 
     .dock-separator { margin: 0; }
+}
+.heds{
+    width: 2399;
 }

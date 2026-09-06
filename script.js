@@ -505,6 +505,7 @@
                 <div class="settings-sidebar">
                     <button class="settings-tab active" data-settings="appearance">Appearance</button>
                     <button class="settings-tab" data-settings="system">System</button>
+                    <button class="settings-tab" data-settings="About">About</button>
                 </div>
 
                 <div class="settings-content">
@@ -530,6 +531,13 @@
                         <p>Drinoed OS</p>
                         <p>Version 1.0</p>
                         <button class="settings-action" id="reset-settings">Reset Settings</button>
+                    </section>
+                    <section class="About-section hidden" data-settings-page="About">
+                        <h2>About</h2>
+                        <p>Drinoed OS is a WEB based OS UI.</p>
+                        <p>It build by Yoru Ayan on 5th setember 2026 and changes are going on.</p>
+                        <p>Here are some more good projects on My Github <a href="https://github.com/aniway89">Here</a></p>
+
                     </section>
                 </div>
             </div>
